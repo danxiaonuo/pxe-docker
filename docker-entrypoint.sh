@@ -8,7 +8,7 @@ export 'DHCP_RANGE_HIGH='$(for e in $(ls -l /sys/class/net/ | grep -v virtual  |
 
 
 ## 创建相关目录文件
-mkdir -pv ${PXE_PATH}/{bios,uefi,boot,iso,grub,ks} && chmod -R 775 ${PXE_PATH}
+mkdir -pv ${PXE_PATH}/{bios,uefi,boot,iso,grub,ks,pxelinux.cfg} && chmod -R 775 ${PXE_PATH}
 
 ## 安装PXE BOOT文件
 ### BIOS system
