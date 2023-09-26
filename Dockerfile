@@ -30,7 +30,11 @@ ARG GATEWAY_IP=""
 ARG DHCP_DNS=""
 ARG DHCP_NTP=""
 ARG PXE_PATH="/srv/tftp"
-
+ARG OS_NAME=""
+ARG OS_VER=""
+ARG OS_NUM=""
+ARG PXE_ISO=""
+ARG PXE_KS=""
 
 # 环境设置
 ARG DEBIAN_FRONTEND=noninteractive
