@@ -33,8 +33,8 @@ ARG PXE_PATH="/srv/tftp"
 ARG OS_NAME=""
 ARG OS_VER=""
 ARG OS_NUM=""
-ARG PXE_ISO=""
-ARG PXE_KS=""
+ARG PXE_ISO_URL=""
+ARG PXE_KS_URL=""
 
 # 环境设置
 ARG DEBIAN_FRONTEND=noninteractive
