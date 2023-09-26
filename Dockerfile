@@ -21,6 +21,17 @@ ENV DOCKER_IMAGE_OS=$DOCKER_IMAGE_OS
 ARG DOCKER_IMAGE_TAG=22.04
 ENV DOCKER_IMAGE_TAG=$DOCKER_IMAGE_TAG
 
+# PXE 环境变量
+ARG INTERFACE=""
+ARG PXE_IP=""
+ARG DHCP_RANGE_LOW=""
+ARG DHCP_RANGE_HIGH=""
+ARG GATEWAY_IP=""
+ARG DHCP_DNS=""
+ARG DHCP_NTP=""
+ARG PXE_PATH="/srv/tftp"
+
+
 # 环境设置
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND=$DEBIAN_FRONTEND
@@ -111,3 +122,9 @@ RUN set -eux && \
     ln -sf /usr/bin/pip3 /usr/bin/pip && \
     ln -sf /usr/bin/python3 /usr/bin/python && \
     rm -r /root/.cache
+
+# ***** 工作目录 *****
+WORKDIR ${PXE_PATH}
+
+# ***** 入口 *****
+ENTRYPOINT ["docker-entrypoint.sh"]
