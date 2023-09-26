@@ -77,3 +77,5 @@ LABEL MENU LABEL Boot on Local Hard
       localboot 0
 EOF
 
+# 运行dnsmasq
+exec dnsmasq -k
