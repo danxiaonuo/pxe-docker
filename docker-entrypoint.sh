@@ -69,7 +69,7 @@ LABEL MENU LABEL Install ${OS_NAME}
         MENU DEFAULT
         KERNEL boot/${OS_NUM}/vmlinuz
         INITRD boot/${OS_NUM}/initrd
-        APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp cloud-config-url=/dev/null fsck.mode=skip net.ifnames=0 biosdevname=0 url=${PXE_ISO} autoinstall ds=nocloud-net;s=${PXE_KS}
+        APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp cloud-config-url=/dev/null fsck.mode=skip net.ifnames=0 biosdevname=0 url=${PXE_ISO_URL} autoinstall ds=nocloud-net;s=${PXE_KS_URL}
 
 LABEL MENU LABEL Boot on Local Hard
       MENU LABEL Boot on Local Hard
