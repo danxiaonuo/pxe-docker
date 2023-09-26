@@ -123,6 +123,13 @@ RUN set -eux && \
     ln -sf /usr/bin/python3 /usr/bin/python && \
     rm -r /root/.cache
 
+# 拷贝文件
+COPY ["./docker-entrypoint.sh", "/usr/bin/"]
+
+# ***** 检查依赖并授权 *****
+RUN set -eux && \
+    chmod a+x /usr/bin/docker-entrypoint.sh
+
 # ***** 工作目录 *****
 WORKDIR ${PXE_PATH}
 
