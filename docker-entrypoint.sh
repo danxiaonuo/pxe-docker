@@ -4,7 +4,7 @@
 # PXE IP地址
 PXE_IP=$(for e in $(ls -l /sys/class/net/ | grep -v virtual  | grep -v 'total' | awk '{print $9}'); do ifconfig | grep -1 $e | grep inet | awk '{print $2}';done)
 # 接口名称
-INTERFACE=$(ls -l /sys/class/net/ | grep -v virtual  | grep -v 'total' | awk '{print $9}')
+INTERFACE=$(ip route | grep -i 'via' | awk 'END {print $5}')''
 # DHCP起始地址
 DHCP_RANGE_LOW=$(for e in $(ls -l /sys/class/net/ | grep -v virtual  | grep -v 'total' | awk '{print $9}'); do ifconfig | grep -1 $e | grep inet | awk '{print $2}';done | awk 'BEGIN{ FS = "."} {print $1"."$2"."$3".10"}')
 # DHCP起始结束地址
