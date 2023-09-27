@@ -79,8 +79,6 @@ dhcp-option=3,${GATEWAY_IP}
 # DNS 服务器选项
 dhcp-option=6,${DHCP_DNS}
 server=${DHCP_DNS}
-# NTP 服务器选项
-dhcp-option=42,${DHCP_NTP}
 # 启用tftp服务
 enable-tftp
 # 设置tftp服务目录
