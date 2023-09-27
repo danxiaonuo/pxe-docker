@@ -25,8 +25,6 @@ DHCP_RANGE_HIGH="${DHCP_RANGE_HIGH:=${DHCP_RANGE_HIGH}}"
 GATEWAY_IP="${GATEWAY_IP:=${GATEWAY_IP}}"
 # DHCP DNS地址
 DHCP_DNS="${DHCP_DNS:=223.5.5.5}"
-# DHCP NTP地址
-DHCP_NTP="${DHCP_NTP:=ntp.aliyun.com}"
 # PXE 路径
 PXE_PATH="${PXE_PATH:=/srv/tftp}"
 # 系统名称
@@ -45,7 +43,6 @@ echo "PXE IP地址:" ${PXE_IP}
 echo "DHCP起始地址:" ${DHCP_RANGE_LOW}
 echo "DHCP起始结束地址:" ${DHCP_RANGE_HIGH}
 echo "DHCP DNS地址:" ${DHCP_DNS}
-echo "DHCP_NTP:" ${DHCP_NTP}
 echo "PXE 路径:" ${PXE_PATH}
 echo "系统名称:" ${OS_NAME}
 echo "系统版本:" ${OS_VER}
