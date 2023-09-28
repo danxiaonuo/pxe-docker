@@ -1,0 +1,113 @@
+version: '3.9'
+services:
+
+  # 服务名
+  nginx:
+    # 模拟一个伪终端
+    tty: true
+    # 打开标准输入,可以接受外部输入
+    stdin_open: true
+    # 主机名
+    hostname: nginx
+    # 指定容器名称
+    container_name: nginx
+    # 指定为镜像名称或镜像ID
+    image: danxiaonuo/nginx:latest
+    # 覆盖容器启动后默认执行的命令
+    # command: /sbin/init
+    # 允许容器中运行一些特权命令
+    privileged: true
+    # 指定容器退出后的重启策略为始终重启
+    restart: always
+    # 指定容器的内核能力(capacity)分配
+    cap_add:
+     - ALL
+    # 数据卷所挂载路径设置
+    volumes:
+      # 数据目录
+      - ./conf/tftp:/srv/tftp:ro,cached
+      # 配置目录与文件
+      - ./conf/nginx/vhost:/data/nginx/conf/vhost:rw,cached
+        # 日志目录
+      - ./logs/nginx:/data/nginx/logs:delegated
+      # 同步宿主机时区与时间
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
+      - /etc/localtime:/etc/localtime:ro,cached
+      # 共享内核
+      #- /lib/modules:/lib/modules:ro,cached
+      #- /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
+    # 指定设备映射关系
+    devices:
+     - /dev/net/tun
+    # 解决容器的依赖
+    #depends_on:
+    #  - ""
+    # 配置容器连接的网络
+    network_mode: "host"
+    # 指定容器的 ulimits 限制值
+    ulimits:
+      nproc: 65535
+      nofile:
+          soft: 65535
+          hard: 65535
+
+  # 服务名
+  pxe:
+    # 模拟一个伪终端
+    tty: true
+    # 打开标准输入,可以接受外部输入
+    stdin_open: true
+    # 主机名
+    hostname: pxe
+    # 指定容器名称
+    container_name: pxe
+    # 指定为镜像名称或镜像ID
+    image: danxiaonuo/pxe:latest
+    # 覆盖容器启动后默认执行的命令
+    # command: tail -f /dev/null
+    # 允许容器中运行一些特权命令
+    privileged: true
+    # 指定容器退出后的重启策略为始终重启
+    restart: always
+    # 指定容器的内核能力(capacity)分配
+    cap_add:
+     - ALL
+    # 数据卷所挂载路径设置
+    volumes:
+      # 数据目录
+      - ./conf/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf:rw,cached
+      - ./conf/tftp:/srv/tftp:rw,cached
+      - ./logs/dnsmasq.log:/var/log/dnsmasq.log:rw,cached
+      # 同步宿主机时区与时间
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro,cached
+      - /etc/localtime:/etc/localtime:ro,cached
+      # 共享内核
+      - /lib/modules:/lib/modules:ro,cached
+      - /etc/sysctl.conf:/etc/sysctl.conf:ro,cached
+    # 环境变量
+    environment:
+      # DHCP DNS地址
+      - DHCP_DNS=192.168.75.14
+      # PXE 路径
+      - PXE_PATH=/srv/tftp
+      # 系统名称
+      - OS_NAME=Ubuntu Jammy
+      # 系统版本
+      - OS_VER=(22.04.3)
+      # 系统编号
+      - OS_NUM=ubuntu22043
+      # ISO 下载地址
+      - PXE_ISO_URL=http://ifly.iflytek.com/get/tftp/iso/ubuntu-22.04.3-live-server-amd64.iso
+      # KS 配置文件下载地址
+      - PXE_KS_URL=http://ifly.iflytek.com/get/tftp/ks/ubuntu22043/autoinstall/
+    # 解决容器的依赖
+    depends_on:
+      - "nginx"
+    # 配置容器连接的网络
+    network_mode: "host"
+    # 指定容器的 ulimits 限制值
+    ulimits:
+      nproc: 65535
+      nofile:
+          soft: 65535
+          hard: 65535
