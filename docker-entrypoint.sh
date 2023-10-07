@@ -143,7 +143,7 @@ LABEL MENU LABEL Install ${OS_NAME}
         MENU DEFAULT
         KERNEL boot/${OS_NUM}/vmlinuz
         INITRD boot/${OS_NUM}/initrd.img
-        APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp fsck.mode=skip net.ifnames=0 biosdevname=0 inst.repo=${PXE_ISO_URL} ks=${PXE_KS_URL}
+        APPEND ip=dhcp fsck.mode=skip net.ifnames=0 biosdevname=0 inst.repo=${PXE_ISO_URL} ks=${PXE_KS_URL}
 
 LABEL MENU LABEL Boot on Local Hard
       MENU LABEL Boot on Local Hard
