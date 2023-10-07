@@ -92,8 +92,10 @@ dhcp-boot=tag:efi-x86_64,uefi/syslinux.efi
 log-facility=/var/log/dnsmasq.log
 EOF
 
-# pxe启动菜单选项
-cat << EOF > ${PXE_PATH}/pxelinux.cfg/default
+if [[ $OS_TYPE == debian ]]; then
+
+	# pxe启动菜单选项
+	cat <<EOF >${PXE_PATH}/pxelinux.cfg/default
 MENU TITLE ########## PXE Boot Menu ##########
 MENU COLOR TABMSG  37;40  #ffffffff #00000000
 MENU COLOR TITLE   37;40  #ffffffff #00000000
@@ -117,6 +119,39 @@ LABEL MENU LABEL Boot on Local Hard
       MENU DEFAULT
       localboot 0
 EOF
+
+elif
+
+	[[ $OS_TYPE == redhat ]]
+then
+
+	# pxe启动菜单选项
+	cat <<EOF >${PXE_PATH}/pxelinux.cfg/default
+MENU TITLE ########## PXE Boot Menu ##########
+MENU COLOR TABMSG  37;40  #ffffffff #00000000
+MENU COLOR TITLE   37;40  #ffffffff #00000000
+MENU COLOR SEL      7     #ffffffff #00000000
+MENU COLOR UNSEL    37;40 #ffffffff #00000000
+MENU COLOR BORDER   37;40 #ffffffff #00000000
+
+DEFAULT menu.c32
+PROMPT 0
+TIMEOUT 900
+
+LABEL MENU LABEL Install ${OS_NAME}
+        MENU LABEL ${OS_NAME} ${OS_VER} Automated Installer
+        MENU DEFAULT
+        KERNEL boot/${OS_NUM}/vmlinuz
+        INITRD boot/${OS_NUM}/initrd.img
+        APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp fsck.mode=skip net.ifnames=0 biosdevname=0 inst.repo=${PXE_ISO_URL} ks=${PXE_KS_URL}
+
+LABEL MENU LABEL Boot on Local Hard
+      MENU LABEL Boot on Local Hard
+      MENU DEFAULT
+      localboot 0
+EOF
+
+fi
 
 # 运行dnsmasq
 exec dnsmasq -k
