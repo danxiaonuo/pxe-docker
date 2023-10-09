@@ -12,7 +12,16 @@ mount -o loop ubuntu-22.04.3-live-server-amd64.iso /mnt
 cp -av /mnt/casper/{initrd,vmlinuz} /srv/tftp/boot/ubuntu2204
 umount /mnt
 
-#### Fedora/RHEL/Centos 内核镜像挂载
+#### Centos 内核镜像挂载
+mkdir -pv /srv/tftp/iso/centos7.9
 mount -o loop CentOS-7-x86_64-DVD-2009.iso /mnt
 cp -av /mnt/isolinux/{initrd.img,vmlinuz} /srv/tftp/boot/centos792009/
+cp -av /mnt/* /srv/tftp/iso/centos7.9/
+umount /mnt
+
+#### RHEL 内核镜像挂载
+mkdir -pv /srv/tftp/iso/rhel7.4
+mount -o loop rhel-server-7.4-x86_64-dvd.iso /mnt
+cp -av /mnt/isolinux/{initrd.img,vmlinuz} /srv/tftp/boot/rhel0704/
+cp -av /mnt/* /srv/tftp/iso/rhel7.4/
 umount /mnt
