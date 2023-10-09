@@ -19,6 +19,9 @@ timedatectl set-local-rtc 1
 timedatectl set-timezone Asia/Shanghai
 
 # 时间同步
+crontab -l | { cat; echo "* * * * * /usr/sbin/ntpdate -b -u ntp.aliyun.com && /sbin/hwclock -w"; } | crontab -
+
+# 时间同步
 cat > /etc/chrony/chrony.conf<<EOF
 # 指定上层NTP服务器为阿里云提供的公网NTP服务器
 server ntp.aliyun.com iburst minpoll 4 maxpoll 10
