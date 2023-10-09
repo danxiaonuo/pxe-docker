@@ -6,10 +6,10 @@ autoinstall:
       list: |
         root: $6$t0IWxVSKk/p2bIQ4$QAqVV21tgRqyoFqqVEpK.oDKWA8OiJ2W23sbrYkMn0ICEBa9aCatFPnyh0uVo3OsHliaM028gXWAfblJLucxK/
   identity:
-    hostname: iflytek
+    hostname: xiaonuo
     password: $6$zTZi9AacKapp0x0R$7GMj/PEnSmi1LuMowfyXjemo6x7JQxSavF8rkJOmTAozP1l7nWQ7/D2JyhjkAENOv8w6A4cSneFo3GKPJTGb90
-    realname: iflytek
-    username: iflytek
+    realname: xiaonuo
+    username: xiaonuo
   keyboard:
     layout: cn
     toggle: null
