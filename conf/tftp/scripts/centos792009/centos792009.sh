@@ -54,7 +54,6 @@ sudo -E yum -y remove epel-release
 sudo -E yum -y install epel-release
 tee /etc/yum.repos.d/epel.repo<<-'EOF'
 [epel]
-[epel]
 name=Extra Packages for Enterprise Linux 7 - $basearch
 baseurl=http://mirrors.aliyun.com/epel/7/$basearch
 failovermethod=priority
