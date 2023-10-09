@@ -339,3 +339,4 @@ kernel.softlockup_all_cpu_backtrace = 1
 kernel.softlockup_panic = 1
 EOF
 sysctl -p
+rm -rf *.sh
