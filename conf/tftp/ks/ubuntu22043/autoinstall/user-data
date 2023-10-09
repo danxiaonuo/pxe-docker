@@ -165,7 +165,7 @@ autoinstall:
       type: mount
       id: mount-0
   late-commands:
-    - curtin in-target --target=/target -- /usr/bin/wget -P /root/ http://${PXE_IP}/get/tftp/scripts/ubuntu22043/ubuntu22043.sh
+    - curtin in-target --target=/target -- /usr/bin/wget -P /root/ http://${PXE_IP}/get/scripts/ubuntu22043/ubuntu22043.sh
     - curtin in-target --target=/target -- /usr/bin/bash -x /root/ubuntu22043.sh >> /root/ubuntu22043.txt
   shutdown: poweroff
   version: 1
