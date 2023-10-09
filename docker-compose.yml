@@ -93,15 +93,15 @@ services:
       # PXE 路径
       - PXE_PATH=/srv/tftp
       # 系统名称
-      - OS_NAME=Ubuntu Jammy
+      - OS_NAME=Ubuntu Focal
       # 系统版本
-      - OS_VER=(22.04.3)
+      - OS_VER=(20.04.6)
       # 系统编号
-      - OS_NUM=ubuntu22043
+      - OS_NUM=ubuntu20046
       # ISO 下载地址
-      - PXE_ISO_URL=http://${PXE_IP}/get/iso/ubuntu-22.04.3-live-server-amd64.iso
+      - PXE_ISO_URL=http://${PXE_IP}/get/iso/ubuntu-20.04.6-live-server-amd64.iso
       # KS 配置文件下载地址
-      - PXE_KS_URL=http://${PXE_IP}/get/ks/ubuntu22043/autoinstall/
+      - PXE_KS_URL=http://${PXE_IP}/get/ks/ubuntu20046/autoinstall/
     # 解决容器的依赖
     depends_on:
       - "nginx"
