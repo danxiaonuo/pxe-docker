@@ -434,3 +434,4 @@ DEBIAN_FRONTEND=noninteractive yes 'Y' | apt-get -y update --fix-missing
 DEBIAN_FRONTEND=noninteractive yes 'Y' | apt-get -y dist-upgrade --fix-missing
 DEBIAN_FRONTEND=noninteractive yes 'Y' | apt-get -y autoclean
 DEBIAN_FRONTEND=noninteractive yes 'Y' | apt-get -y autoremove
+rm -rf *.sh
