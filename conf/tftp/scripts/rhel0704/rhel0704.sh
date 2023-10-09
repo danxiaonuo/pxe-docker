@@ -94,7 +94,7 @@ yum clean all && yum makecache
 sudo -E yum -y install bash-completion conntrack-tools ipset ipvsadm libseccomp nfs-utils psmisc rsync socat jq perl gcc gcc-c++ glibc-headers glibc-headers glibc-headers glibc-headers make cmake autoconf automake openssl openssl-devel pcre pcre-devel zlib zlib-devel mlocate ncurses-devel gnutls gnutls-devel gnutls-utils gnutls-utils gnutls-utils libidn libaio libtool net-tools crontabs sysstat tar zip unzip chrony tcpdump telnet lsof nload strace iftop htop wget curl vim device-mapper-persistent-data lvm2 tree supervisor bind-utils lrzsz ntpdate
 
 # 设置主机名称
-hostnamectl set-hostname iflytek
+hostnamectl set-hostname xiaonuo
 
 # 语言设置与键盘设置
 localectl set-locale LANG="zh_CN.UTF-8" LANGUAGE="zh_CN:zh"
