@@ -12,8 +12,13 @@ wget https://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-DVD-
 ## 复制镜像和内核
 ### 挂载镜像
 #### Ubuntu 内核镜像挂载
+
+mount -o loop ubuntu-20.04.6-live-server-amd64.iso /mnt <br/>
+cp -av /mnt/casper/{initrd,vmlinuz} /srv/tftp/boot/ubuntu20046 <br/>
+umount /mnt <br/>
+
 mount -o loop ubuntu-22.04.3-live-server-amd64.iso /mnt <br/>
-cp -av /mnt/casper/{initrd,vmlinuz} /srv/tftp/boot/ubuntu2204 <br/>
+cp -av /mnt/casper/{initrd,vmlinuz} /srv/tftp/boot/ubuntu22043 <br/>
 umount /mnt <br/>
 
 #### Centos 内核镜像挂载 
