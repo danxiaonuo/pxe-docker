@@ -99,9 +99,9 @@ services:
       # 系统编号
       - OS_NUM=ubuntu22043
       # ISO 下载地址
-      - PXE_ISO_URL=http://ifly.iflytek.com/get/tftp/iso/ubuntu-22.04.3-live-server-amd64.iso
+      - PXE_ISO_URL=http://${PXE_IP}/get/iso/ubuntu-22.04.3-live-server-amd64.iso
       # KS 配置文件下载地址
-      - PXE_KS_URL=http://ifly.iflytek.com/get/tftp/ks/ubuntu22043/autoinstall/
+      - PXE_KS_URL=http://${PXE_IP}/get/ks/ubuntu22043/autoinstall/
     # 解决容器的依赖
     depends_on:
       - "nginx"
